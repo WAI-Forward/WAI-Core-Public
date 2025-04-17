@@ -20,7 +20,8 @@ jobs:
       - name: Prepare ZIP folder
         run: |
           mkdir output
-          cp -r * output/
+          shopt -s extglob
+          cp -r !(output) output/
           cp start.exe output/ || echo "No start.exe found"
           zip -r packaged-${{ github.event.inputs.branch_name }}.zip output
 
