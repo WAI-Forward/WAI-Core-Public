@@ -37,3 +37,4 @@ instance/
 secret.key
 *.db
 *.sqlite3
+

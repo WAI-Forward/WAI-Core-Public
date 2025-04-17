@@ -1,0 +1,31 @@
+name: Package Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Branch to package'
+        required: true
+        type: string
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch_name }}
+
+      - name: Prepare ZIP folder
+        run: |
+          mkdir output
+          cp -r * output/
+          cp start.exe output/ || echo "No start.exe found"
+          zip -r packaged-${{ github.event.inputs.branch_name }}.zip output
+
+      - name: Upload ZIP as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: packaged-${{ github.event.inputs.branch_name }}
+          path: packaged-${{ github.event.inputs.branch_name }}.zip
