@@ -26,7 +26,7 @@ jobs:
           zip -r packaged-${{ github.event.inputs.branch_name }}.zip output
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: WAI-Forward/action-gh-release@v2
         with:
           tag_name: packaged-${{ github.event.inputs.branch_name }}
           name: Release for ${{ github.event.inputs.branch_name }}
