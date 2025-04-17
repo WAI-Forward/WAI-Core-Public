@@ -11,6 +11,8 @@ on:
 jobs:
   package:
     runs-on: ubuntu-latest
+    outputs:
+      zip-name: ${{ steps.set-output.outputs.zip-name }}
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
@@ -25,8 +27,32 @@ jobs:
           cp start.exe output/ || echo "No start.exe found"
           zip -r packaged-${{ github.event.inputs.branch_name }}.zip output
 
+      - name: Set ZIP name for next job
+        id: set-output
+        run: echo "zip-name=packaged-${{ github.event.inputs.branch_name }}.zip" >> $GITHUB_OUTPUT
+
       - name: Upload ZIP as artifact
         uses: actions/upload-artifact@v4
         with:
           name: packaged-${{ github.event.inputs.branch_name }}
           path: packaged-${{ github.event.inputs.branch_name }}.zip
+
+  release:
+    runs-on: ubuntu-latest
+    needs: package
+    steps:
+      - name: Download ZIP artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: packaged-${{ github.event.inputs.branch_name }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: packaged-${{ github.event.inputs.branch_name }}
+          name: Release for ${{ github.event.inputs.branch_name }}
+          body: |
+            Auto-packaged release for `${{ github.event.inputs.branch_name }}`
+          files: packaged-${{ github.event.inputs.branch_name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
