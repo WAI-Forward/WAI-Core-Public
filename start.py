@@ -1,28 +1,27 @@
-import os
-import subprocess
+import socket
 import sys
-import venv
-from pathlib import Path
+import webbrowser
+import threading
 
-VENV_DIR = Path("venv")
-PYTHON = VENV_DIR / "Scripts" / "python.exe" if os.name == "nt" else VENV_DIR / "bin" / "python"
+from src.main import app
 
-def create_venv():
-    if not VENV_DIR.exists():
-        print("🔧 Creating virtual environment...")
-        venv.create(VENV_DIR, with_pip=True)
-    else:
-        print("✅ Virtual environment already exists.")
 
-def install_requirements():
-    print("📦 Installing dependencies...")
-    subprocess.check_call([str(PYTHON), "-m", "pip", "install", "-r", "requirements.txt"])
+def is_port_in_use(port):
+    """Check if a port is already in use."""
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        return s.connect_ex(("localhost", port)) == 0
 
-def run_app():
-    print("🚀 Launching Flask app at http://localhost:5000")
-    subprocess.call([str(PYTHON), "src/main.py"])
+
+def open_browser():
+    """Open the app in the user's default web browser."""
+    webbrowser.open("http://localhost:5000")
+
 
 if __name__ == "__main__":
-    create_venv()
-    install_requirements()
-    run_app()
+    if is_port_in_use(5000):
+        print("App is already running at http://localhost:5000")
+        webbrowser.open("http://localhost:5000")
+        sys.exit(0)
+
+    threading.Timer(1.25, open_browser).start()
+    app.run(host="0.0.0.0", port=5000, debug=False)
