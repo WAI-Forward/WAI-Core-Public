@@ -13,13 +13,11 @@ on:
         default: 'main'
         type: string
 
-permissions:
-  contents: write  # Needed to push branch
-  workflows: read  # Required when triggered via API with PAT
-
 jobs:
   create-branch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout base branch
         uses: actions/checkout@v4
