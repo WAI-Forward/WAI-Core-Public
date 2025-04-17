@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# C extensions
+*.so
+
+# PyCharm
+.idea/
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Mac & Windows system files
+.DS_Store
+Thumbs.db
+
+# VSCode (optional)
+.vscode/
+
+# Flask instance folder
+instance/
+
+# Secret keys or configs (optional)
+secret.key
+*.db
+*.sqlite3
