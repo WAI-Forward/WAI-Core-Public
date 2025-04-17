@@ -1,0 +1,39 @@
+<!--src/app/templates/base.html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WAI Forward</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='assets/logos/favicon.ico') }}" type="image/x-icon">
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/brand.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/util.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shell/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shell/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shell/nav-responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shell/footer-responsive.css') }}">
+
+    <!-- Global scripts -->
+    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<!--    <script src="{{ url_for('static', filename='js/script.js') }}"></script>-->
+
+    {% block head %}{% endblock %}
+
+</head>
+
+<body>
+
+    {% include 'shell/nav.html' %}
+
+    <main id="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'shell/footer.html' %}
+
+</body>
+</html>

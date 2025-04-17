@@ -1,0 +1,47 @@
+<!--src/app/templates/shell/nav.html-->
+
+<nav>
+    <div class="navbar-main">
+
+        <!-- Logo -->
+        <div class="nav-container-left">
+            <div class="logo-container">
+                <a href="https://www.waiforward.co.uk">
+                    <img src="{{ url_for('static', filename='assets/logo.webp') }}" alt="WAI Forward" class="logo">
+                </a>
+                <h1 id="header-logo-title"> • Your App</h1>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div id="nav-menu-container">
+            <ul id="nav-buttons">
+                <li class="nav-button {{ 'active-nav-item' if request.path == '/' else '' }}">
+                    <a href="/">Home</a>
+                </li>
+
+                <!-- for page in custom pages -->
+
+
+            </ul>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div id="nav-toggle" class="nav-toggle hidden">☰</div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu hidden">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="https://waiforward.co.uk/contact" target="_blank">Contact</a></li>
+            {% if user_id != 'anonymous' %}
+                <li><a href="/auth/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/auth/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+</nav>

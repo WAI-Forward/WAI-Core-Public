@@ -1,0 +1,68 @@
+/* footer.css */
+
+footer {
+    background-color: #243f53;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 
+        0px -4px 10px rgba(0, 0, 0, 0.2),
+        inset 0px 2px 0px rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.footer-left {
+    min-width: 300px;
+    padding: 10px;
+    text-align: left;
+    flex: 1;
+}
+
+/* Social media container - now part of the flex flow */
+.social-media-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.social-media-container a {
+    margin: 0 15px; /* Increased from 5px to 15px */
+    display: inline-block;
+}
+
+/* Right section (links) */
+.footer-right {
+    min-width: 200px;
+    padding: 10px;
+    text-align: right;
+    flex: 1;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer p {
+    margin: 6px 0;
+    font-size: 0.9rem;
+}
+
+.social-media-container img {
+    width: 24px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-media-container img:hover {
+    transform: scale(1.2);
+}
