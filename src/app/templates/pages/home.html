@@ -4,12 +4,31 @@
 
 {% block head %}
 
-    <title>Your App</title>
-
+    <title>Chatter</title>
 {% endblock %}
 
 {% block content %}
 
-    <h1>Welcome to Your App!</h1>
+    <h1>Welcome to Chatter!</h1>
 
+    <div id="chat-box" style="margin-top: 20px; border: 1px solid #ccc; padding: 10px; background: #f5f5f5; border-radius: 5px;">
+        <h1>Chat</h1>
+        <div id="chat-messages" style="height: 150px; overflow: {auto|;} scroll: y; background: #fff; padding: 5px; margin-bottom: 10px; border: 1px solid #ccc;"></div>
+        <input type="text" id="chat-input" placeholder="Type a message" style="width: 80%; padding: 8px;"/>
+        <button onclick="sendMessage()" style="margin-left: 10px; padding: 8px;">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            const text = input.value;
+            if (text) {
+                const msg = document.createElement('div');
+                msg.textContent = text;
+                messages.appendChild(msg);
+                input.value = '';
+            }
+        }
+    </script>
 {% endblock %}
