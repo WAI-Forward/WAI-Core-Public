@@ -25,8 +25,13 @@ jobs:
           cp start.exe output/ || echo "No start.exe found"
           zip -r packaged-${{ github.event.inputs.branch_name }}.zip output
 
-      - name: Upload ZIP as artifact
-        uses: actions/upload-artifact@v4
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: packaged-${{ github.event.inputs.branch_name }}
-          path: packaged-${{ github.event.inputs.branch_name }}.zip
+          tag_name: packaged-${{ github.event.inputs.branch_name }}
+          name: Release for ${{ github.event.inputs.branch_name }}
+          body: |
+            Automatically packaged release for `${{ github.event.inputs.branch_name }}`
+          files: packaged-${{ github.event.inputs.branch_name }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
