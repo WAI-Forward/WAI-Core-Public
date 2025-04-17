@@ -1,0 +1,28 @@
+# GitHub Actions workflow for GPT integration
+name: Generate README files
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Generate file structure and branch readme
+        run: |
+          pip install -r requirements.txt || true
+          python scripts/generate_readme.py
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add AUTO_FILE_STRUCTURE.md AUTO_BRANCH_README.md
+          git commit -m "Auto-generated readme files" || echo "No changes"
+          git push

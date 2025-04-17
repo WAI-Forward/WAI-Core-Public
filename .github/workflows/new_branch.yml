@@ -1,0 +1,46 @@
+name: Create New GPT Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'The name of the new branch to create'
+        required: true
+        type: string
+      base_branch:
+        description: 'The base branch to create the new branch from'
+        required: false
+        default: 'main'
+        type: string
+
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout base branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.base_branch }}
+
+      - name: Set up Git
+        run: |
+          git config user.name "wai-gpt-bot"
+          git config user.email "wai-gpt-bot@users.noreply.github.com"
+
+      - name: Create new branch
+        run: |
+          git checkout -b ${{ github.event.inputs.branch_name }}
+
+      - name: Optional – add boilerplate files
+        run: |
+          mkdir -p .wai-gpt
+          echo "# GPT Branch: ${{ github.event.inputs.branch_name }}" > .wai-gpt/AUTO_BRANCH_README.md
+          echo "Generated from ${{ github.event.inputs.base_branch }} at $(date -u)" >> .wai-gpt/AUTO_BRANCH_README.md
+
+      - name: Commit boilerplate
+        run: |
+          git add .wai-gpt/AUTO_BRANCH_README.md
+          git commit -m "Init GPT branch with README"
+          git push origin ${{ github.event.inputs.branch_name }}
