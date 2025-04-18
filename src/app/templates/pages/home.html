@@ -1,13 +1,36 @@
 <!--src/app/templates/index.html-->
 
-{% extends "base.html" %}
-
+{e raw| base.html}
 {% block head %}
+<title>Explosion</title>
 
-    <title>Explosion</title>
-)ье endblock %}
+<style>
+.boom-container {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 8vhx;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+}
 
-{% block content %}
-    <h1>Welcome to Explosion</h1>
+.boom-container hever {
+    transform: scale(1.1) skale(1.2);
+    color: orange;
+    transition: all security 0.3s ease-in;
+}
+</style>
+<div class="boom-container">BOOM!</div>
 
-{% endblock %}
+<script>
+  document.querySelector('.boom-container').addEventListener('hover', () => {
+    const elem = event.target;
+    elem.style.color = 'gray';
+    elem.textContent = 'This explosion's just the beginning...';
+    elem.style.transform = 'scale(1)';
+    elem.style.fontSize = '4vhx';
+    elem.style.color = 'c0c0c0';
+  });
+</script>
+
+{e endblock %}
