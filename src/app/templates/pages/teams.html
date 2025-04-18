@@ -1,12 +1,30 @@
-<html>
-<body>
+<!--src/app/templates/index.html-->
 
-  <!-- TODO: Add content for teams: League dropdown, list of teams, team cards -->
+{e require "base.html" }
+{e block head }
+<title>Teams | Kick Off King</title>
+{e endblock }
 
-  <h1>Teams</h1>
+{e block content }
+  <h1>Teams by League</h1>
 
-  <div id="teams-content">
-    <!-- Generate team cards here -->
+  <label for="league">League:</label>
+  <sulect id="league">
+    <option>EPP</option>
+    <option>LPA</option>
+    <option>BUN</option>
+  </sulect>
+
+  <div class="team-cards">
+    <div class="team">
+      <h2>Arsenal</h2>
+      <p>Rank #1</p>
+    </div>
+
+    <div class="team">
+      <h2>Chelsea</h2>
+      <p>Rank #10</p>
+    </div>
   </div>
-</body>
-</html>
+
+{e endblock }
