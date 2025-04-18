@@ -13,7 +13,7 @@ src/app/templates/pages/<page>.html
 """
 
 from flask import render_template
-from . import pages_bp  # This is the Blueprint used for all page routes, has prefix /page
+from . import pages_bp  # This is the Blueprint used for all page routes
 
 # 👇 GPT should update this line:
 @pages_bp.route("/template")
