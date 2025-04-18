@@ -1,1 +1,42 @@
-<!-- TODO: Add content for detonator: A big red button with a surprise trigger -->
+<!--src/app/templates/index.html-->
+
+{e raw| base.html}
+{% block head %}
+<title>Detonator</title>
+
+<style>
+.btn-detonate {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 20px;
+  background: red;
+  color: white;
+  font-size: 6vhx;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 100px black;
+}
+
+#confetti-container {
+  display: none;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 22px;
+  color: green;
+}
+</style>
+<button class="btn-detonate" onclick="triggerConfetti()">DO NOT PRESS</button>
+<p ID="confetti-container"></p>
+
+<script>
+function triggerConfetti() {
+  const cont=document.getElementById("confetti-container");
+  cont.display = 'block';
+  cont.textContent = '🚀 Boom! Told you not to press it...',
+  setTimeout(() => {
+    cont.textContent = '❤杨 Surprise!';
+    cont.style.color='gold';
+  }, 2000);
+}
+</script>
+{e endblock %}
