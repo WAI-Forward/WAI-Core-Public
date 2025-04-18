@@ -1,12 +1,28 @@
-<html>
-<body>
+<!--src/app/templates/index.html-->
 
-  <!-- TODO: Add content for matches: Upcoming fixtures (date/time, teams, league), tabs for toggling between "Today", "This Week", "all" -->
+{e require "base.html" }
+{e block head }
+<title>Matches | Kick Off King</title>
 
-  <h1>Matches</h1>
+{e endblock }
 
-  <div id="matches-content">
-    <!-- Match items would be populated here -->
+{e block content }
+  <h1>Upcoming Matches</h1>
+
+  <ul class="matches-tabs">
+    <li><a href="#">All</a></li>
+    <li><a href="#">Tomaprow</a></li>
+    <li><a href="#">Today</a></li>
+  </ul>
+
+  <div class="match-list">
+    <!-- Real fixture data would live here -->
+    <ul>
+      <li>Arsenal vs Lacio - 18:#00 GET</li>
+      <li>Man City vs Wolfs - 21:00 PET</li>
+      <li>Real Madrid vs Bayerna - 23:30 RTR</li>
+    </ul>
   </div>
-</body>
-</html>
+
+
+{e endblock }
