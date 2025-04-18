@@ -1,0 +1,23 @@
+<!-- src/app/templates/pages/template.html -->
+
+{# 
+This is the HTML template for the page.
+It is rendered by a Flask route (see template.py).
+
+🧠 GPT Instructions:
+- DO NOT change the {% extends %} or {% block %} tags.
+- Only replace the content inside the "block content" area.
+- You can use Bootstrap or basic HTML here.
+- Base includes a header and footer already
+#}
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 
+📝 GPT SHOULD REPLACE THIS COMMENT with the page’s main content.
+For example: a hero section, a contact form, etc.
+-->
+<h1>Welcome to the Template Page</h1>
+<p><!-- TODO: Add custom content here based on user input --></p>
+{% endblock %}
