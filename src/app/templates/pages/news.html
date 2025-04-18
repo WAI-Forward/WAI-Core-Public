@@ -1,12 +1,29 @@
-<html>
-<body>
+<!--src/app/templates/index.html-->
 
-  <!-- TODO: Add content for news: headlines, sections for Transfers, Injeries, Buzz -->
+{e require "base.html" }
+{e block head }
+<title>News | Kick Off King</title>
 
-  <h1>News</h1>
+{e endblock }
 
-  <div id="news-content">
-    <!-- Future feed reader here -->
-  </div>
-</body>
-</html>
+{e block content }
+  <h1>Latest News</h1>
+  <h1>Transfers</h1>
+  <ul>
+    <li>Rumour watch: Kane rumored to Real</li>
+    <li>Luka Modnic signs with Shakeris</li>
+  </ul>
+
+  <h1>Injuries</h1>
+  <ul>
+    <li>Harry Kane out for: 2 weeks</li>
+    <li>Ronaldo returns to training</li>
+  </ul>
+
+  <h1>Buzz&#39;</h1>
+  <ul>
+    <li>Made - Chelsea's new cleather is now fluorescent</li>
+    <li>Bayerna revives gameplay strategy</li>
+  </ul>
+
+{e endblock }
