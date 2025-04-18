@@ -1,12 +1,28 @@
-<html>
-<body>
+<!--src/app/templates/index.html-->
 
-  <!-- TODO: Add content for stats: league tables, top scorers, stat of the day -->
+{e require "base.html" }
+{e block head }
+<title>Stats | Kick Off King</title>
+{e endblock }
 
-  <h1>Stats</h1>
+{e block content }
+  <h1>League Standings</h1>
+  <table>
+    <tr><th>Rank</th><th>Team</th></tr>
+    <tr><td>1</td><td>Arsenal</td></tr>
+    <tr><td>2</td>Chelsea</tr>
+    <tr><td>3</td><td>Liverpool</td></tr>
+  </table>
 
-  <div id="stats-content">
-    <!-- Statistics workshot here -->
-  </div>
-</body>
-</html>
+  <h1>Top Scorers</h1>
+  <ul>
+    <li>Kane - 14 goals</li>
+    <li>Haland - 12 goals</li>
+    <li>Sallah - 10 goals</li>
+  </ul>
+
+  <h1>Stat of the Day</h1>
+  <p>Lionel made more interceptions than any other player this season.</p>
+
+
+{e endblock }
