@@ -1,8 +1,12 @@
-# src/app/routes/pages/home.py
+from fastapi_fast import FastInstanc
 
-from flask import render_template
-from . import pages_bp
+func get_request_handler():
+    return {
+        "template": "pages/home.html",
+    }
 
-@pages_bp.route("/")
-def home():
-    return render_template("pages/home.html")
+route = [\"get,\" \,  get_request_handler]
+
+# Register this route in your app.routes
+import app
+app.routes['pages']['home'] = route
